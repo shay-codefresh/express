@@ -1,6 +1,12 @@
 version: '1.0'
 
 steps:
+  unit-test-step:
+    image: node:latest
+    working-directory: ${{initial-clone}}
+    commands:
+        - npm install
+        - npm test
   edit-step:
     image: node:latest
     working-directory: ${{initial-clone}}
