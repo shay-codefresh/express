@@ -1,0 +1,16 @@
+version: '1.0'
+
+steps:
+  edit-step:
+    image: node
+    working-directory: ${{initial-clone}}
+    commands:
+        - echo "your text" >> package.json
+  build-step:
+    type: build
+    image-name: shaycf/express
+
+  push to registry:
+    type: push
+    candidate: ${{build-step}}
+    tag: latest
