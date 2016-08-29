@@ -1,6 +1,19 @@
 version: '1.0'
 
 steps:
+  elastic-beanstalk:
+    type: build
+    dockerfile: Dockerfile.aws
+    fail-fast: true
+    image-name: fxempire/aws
+    tag: ${{CF_BRANCH}}
+    working-directory : ${{initial-clone}}
+    build-arguments:
+      - AWS_ACCESS='${{AWS_ACCESS_KEY}}'
+      - AWS_SECRET='${{AWS_SECRET_KEY_ID}}'
+      - AWS_REGION='${{AWS_REGION}}'
+      - AWS_ENV_NAME='${{AWS_ENV_NAME}}'
+      - AWS_VERSION='${{AWS_VERSION}}'
   unit-test-step:
     image: node:latest
     working-directory: ${{initial-clone}}
