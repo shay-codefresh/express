@@ -5,7 +5,7 @@ steps:
     type: build
     dockerfile: Dockerfile.aws
     fail-fast: true
-    image-name: fxempire/aws
+    image-name: shaycf/aws
     tag: ${{CF_BRANCH}}
     working-directory : ${{initial-clone}}
     build-arguments:
@@ -35,5 +35,5 @@ steps:
         - sh -c  "[ ${{CF_BRANCH}} == master ] && aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} && aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && aws configure set region ${{REGION}} && aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} "
   push to registry:
     type: push 
-    candidate: ${{build-step}}
+    candidate: ${{elastic-beanstalk}}
     tag: latest
