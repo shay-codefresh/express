@@ -18,6 +18,7 @@ steps:
   amazon-beanstalk:
     image: garland/aws-cli-docker:latest
     commands:
+        - aws configure
         - aws configure set aws_access_key_id
         - aws configure set aws_secret_access_key
         - aws configure set region us-east-1
