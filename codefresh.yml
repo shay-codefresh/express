@@ -17,7 +17,8 @@ steps:
     image-name: shaycf/express
   amazon-beanstalk:
     image: garland/aws-cli-docker:latest
-    commands: |
+    commands:
+        - |
           sh -c  "[ ${{CF_BRANCH}} != master ] && \
           aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} && \
           aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && \
