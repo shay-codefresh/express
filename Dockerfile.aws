@@ -1,0 +1,17 @@
+FROM garland/aws-cli-docker:latest
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_KEY_ID
+ARG AWS_REGION
+ARG AWS_ENV_NAME
+ARG AWS_VERSION
+ENV key ${AWS_ACCESS_KEY_ID}
+ENV secret_key ${AWS_SECRET_KEY_ID}
+ENV region ${AWS_REGION}
+ENV env_name ${AWS_ENV_NAME}
+ENV ver ${AWS_VERSION}
+RUN echo "key = $key , secret = $secret_key, region =$region ,env= $env_name"
+RUN aws configure set aws_access_key_id $key && \
+aws configure set aws_secret_access_key $secret_key && \
+aws configure set region $region 
+#&& \
+#aws elasticbeanstalk update-environment --environment-name $env_name --version-label $ver
