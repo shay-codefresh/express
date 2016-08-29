@@ -9,11 +9,11 @@ steps:
     tag: ${{CF_BRANCH}}
     working-directory : ${{initial-clone}}
     build-arguments:
-      - AWS_ACCESS_KEY_ID='${{AWS_ACCESS_KEY}}'
-      - AWS_SECRET_ACCESS_KEY='${{AWS_SECRET_ACCESS_KEY}}'
-      - AWS_REGION='${{AWS_REGION}}'
-      - AWS_ENV_NAME='${{AWS_ENV_NAME}}'
-      - AWS_VERSION='${{AWS_VERSION}}'
+      - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY}}
+      - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
+      - AWS_REGION=${{AWS_REGION}}
+      - AWS_ENV_NAME=${{AWS_ENV_NAME}}
+      - AWS_VERSION=${{AWS_VERSION}}
   unit-test-step:
     image: node:latest
     working-directory: ${{initial-clone}}
