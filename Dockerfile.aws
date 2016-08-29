@@ -9,8 +9,8 @@ ENV secret_key ${AWS_SECRET_KEY_ID}
 ENV region ${AWS_REGION}
 ENV env_name ${AWS_ENV_NAME}
 ENV ver ${AWS_VERSION}
-RUN echo "key = $key , secret = $secret_key, region =$region ,env= $env_name"
-RUN aws configure set aws_access_key_id $key && \
+RUN echo "key = $key , secret = $secret_key, region =$region ,env= $env_name" && \
+aws configure set aws_access_key_id $key && \
 aws configure set aws_secret_access_key $secret_key && \
 aws configure set region $region 
 #&& \
