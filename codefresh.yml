@@ -18,7 +18,9 @@ steps:
     image: node:latest
     working-directory: ${{initial-clone}}
     commands:
+        - echo "________________"
         - echo ${{SHAYCHECK1}}
+        - echo "________________"
         - npm install
         - npm test
   edit-step:
