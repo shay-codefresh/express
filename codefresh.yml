@@ -1,7 +1,8 @@
 version: '1.0'
 
 steps:
-  image: node:latest
+  initial-clone:
+    image: node:latest
     commands:
         - echo "helowowowowofoowfowofwofwwo!!!!!!"
  #elastic-beanstalk:
