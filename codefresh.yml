@@ -1,6 +1,9 @@
 version: '1.0'
 
 steps:
+  initial-clone:
+    commands:
+        - echo "helowowowowofoowfowofwofwwo!!!!!!"
  #elastic-beanstalk:
  #  type: build
  #  dockerfile: Dockerfile.aws
