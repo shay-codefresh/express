@@ -5,44 +5,16 @@ steps:
     image: node:latest
     commands:
         - echo "helowowowowofoowfowofwofwwo!!"
-        #
- #
- #elastic-beanstalk:
- #  type: build
- #  dockerfile: Dockerfile.aws
- #  fail-fast: true
- #  image-name: shaycf/aws
- #  tag: ${{CF_BRANCH}}
- #  working-directory : ${{initial-clone}}
- #  build-arguments:
- #    - AWS_ACCESS_KEY_ID=${{AWS_ACCESS_KEY}}
- #    - AWS_SECRET_ACCESS_KEY=${{AWS_SECRET_ACCESS_KEY}}
- #    - AWS_REGION=${{AWS_REGION}}
- #    - AWS_ENV_NAME=${{AWS_ENV_NAME}}
- #    - AWS_VERSION=${{AWS_VERSION}}
   unit-test-step:
     image: node:latest
     working-directory: ${{initial-clone}}
     commands:
-        - echo "________________"
-        - echo ${{SHAYCHECK1}}
-        - echo "________________"
         - npm install
         - npm test
-  edit-step:
-    image: node:latest
-    working-directory: ${{initial-clone}}
-    commands:
-        - echo "your text" >> package.json
   build-step:
     type: build
-    image-name: shaycf/express
-  amazon-beanstalk:
-    fail-fast: false
-    image: garland/aws-cli-docker:latest
-    commands:
-        - sh -c  "[ ${{CF_BRANCH}} == master ] && aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} && aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} && aws configure set region ${{REGION}} && aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} "
-  push to registry:
-    type: push 
-    candidate: ${{elastic-beanstalk}}
-    tag: latest
+    image-name: codefresh/express
+# push to registry:
+#   type: push 
+#   candidate: ${{elastic-beanstalk}}
+#   tag: latest
