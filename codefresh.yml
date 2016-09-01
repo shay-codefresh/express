@@ -4,7 +4,7 @@ steps:
   initial-clone:
     image: node:latest
     commands:
-        - echo "helowowowowofoowfowofwofwwo!!"
+        - echo "override your initial clone step"
   unit-test-step:
     image: node:latest
     working-directory: ${{initial-clone}}
