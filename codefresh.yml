@@ -1,12 +1,12 @@
 version: '1.0'
 
 steps:
- #unit-test-step:
- #  image: node:latest
- #  working-directory: ${{initial-clone}}
- #  commands:
- #      - npm install
- #      - npm test
+  unit-test-step:
+    image: node:latest
+    working-directory: ${{initial-clone}}
+    commands:
+        - npm install
+        - npm test
   build-step:
     type: build
     image-name: codefresh/express
