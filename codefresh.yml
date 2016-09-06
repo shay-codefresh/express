@@ -1,12 +1,12 @@
 version: '1.0'
 
 steps:
-  unit-test-step:
-    image: node:latest
-    working-directory: ${{initial-clone}}
-    commands:
-        - npm install
-        - npm test
+ #unit-test-step:
+ #  image: node:latest
+ #  working-directory: ${{initial-clone}}
+ #  commands:
+ #      - npm install
+ #      - npm test
   build-step:
     type: build
     image-name: codefresh/express
@@ -14,13 +14,13 @@ steps:
     fail-fast: false
     image: garland/aws-cli-docker:latest
     commands:
-     #  sh -c  "[ ${{CF_BRANCH}} == master ] &&
-     #  aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} &&
-     #  aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} &&
-     #  aws configure set region ${{REGION}} &&
-     #  aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} "
         aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} 
   push to registry:
     type: push 
     candidate: ${{build-step}}
     tag: latest
+         #  sh -c  "[ ${{CF_BRANCH}} == master ] &&
+     #  aws configure set aws_access_key_id ${{ACCESS_KEY_ID}} &&
+     #  aws configure set aws_secret_access_key ${{SECRET_ACCESS_KEY_ID}} &&
+     #  aws configure set region ${{REGION}} &&
+     #  aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} "
