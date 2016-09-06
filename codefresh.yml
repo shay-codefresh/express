@@ -14,7 +14,7 @@ steps:
     fail-fast: false
     image: garland/aws-cli-docker:latest
     commands:
-        - aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} 
+        - aws elasticbeanstalk update-environment --environment-name ${{ENV_NAME}} --version-label ${{VERSION}} --region ${{REGION}} 
   push to registry:
     type: push 
     candidate: ${{build-step}}
